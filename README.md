@@ -5,3 +5,12 @@
 
 ## 과제 제출 과정
 * [과제 제출 방법](https://github.com/next-step/nextstep-docs/tree/master/precourse)
+
+## 기능 목록
+- 게임 시작하기
+    - 정답 숫자 생성하기
+    - 핑퐁
+        - 숫자 입력 받기
+        - 입력 받은 숫자와 정답 숫자 비교하기       
+        - 결과 출력하기
+    - 재시작 여부 묻기
