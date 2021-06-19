@@ -27,4 +27,15 @@ public class NumberBaseballTest {
         assertFalse(nums[0] == nums[2]);
         assertFalse(nums[1] == nums[2]);
     }
+
+    @Test
+    @DisplayName("test getStrikes()")
+    public void getStrikes() {
+        int[] targetNumbers = new int[]{1, 3, 7};
+        int[] input = new int[]{3, 2, 9};
+        int result = 0;
+        assertEquals(NBgameServiceImpl.getStrikes(input, targetNumbers), result);
+    }
+
+
 }
