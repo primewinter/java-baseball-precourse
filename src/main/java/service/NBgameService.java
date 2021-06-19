@@ -10,6 +10,10 @@ public interface NBgameService {
 
     public int[] compareInputWithTargetNumbers(int[] input, int[] targetNumbers);
 
+    public int getStrikes(int[] input, int[] targetNumbers);
+
+    public int getBalls(int[] input, int[] targetNumbers);
+
     public void printResult();
 
     public boolean isRestarted();

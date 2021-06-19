@@ -2,6 +2,7 @@ package service.impl;
 
 import java.util.LinkedHashSet;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.Set;
 
 import service.NBgameService;
@@ -37,13 +38,18 @@ public class NBgameServiceImpl implements NBgameService {
 
     @Override
     public void pingpong(int[] targetNumbers) {
-        // TODO Auto-generated method stub
+        Scanner sc = new Scanner(System.in);
+
+        int input = sc.nextInt();
 
     }
 
     @Override
     public int[] compareInputWithTargetNumbers(int[] input, int[] targetNumbers) {
-        // TODO Auto-generated method stub
+        int[] result = new int[2];
+        for(int i = 0 ; i < targetNumbers.length ; i++) {
+
+        }
         return null;
     }
 
@@ -58,5 +64,26 @@ public class NBgameServiceImpl implements NBgameService {
         // TODO Auto-generated method stub
         return false;
     }
+
+    @Override
+    public int getStrikes(int[] input, int[] targetNumbers) {
+        int strikes = 0;
+
+        if( input[0] == targetNumbers[0] ) strikes++;
+        
+        if( input[1] == targetNumbers[1] ) strikes++;
+        
+        if( input[2] == targetNumbers[2] ) strikes++;
+        
+        return strikes;
+    }
+
+    @Override
+    public int getBalls(int[] input, int[] targetNumbers) {
+        return 0;
+    }
+
+    
+
 
 }
