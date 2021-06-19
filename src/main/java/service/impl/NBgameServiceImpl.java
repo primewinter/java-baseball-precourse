@@ -80,7 +80,17 @@ public class NBgameServiceImpl implements NBgameService {
 
     @Override
     public int getBalls(int[] input, int[] targetNumbers) {
-        return 0;
+        int balls = 0;
+        if( input[0] != targetNumbers[0] && ( input[0] == targetNumbers[1] || input[0] == targetNumbers[2] )) {
+            balls++;
+        }
+        if( input[1] != targetNumbers[1] && ( input[1] == targetNumbers[0] || input[1] == targetNumbers[2] )) {
+            balls++;
+        }
+        if( input[2] != targetNumbers[2] && ( input[2] == targetNumbers[0] || input[2] == targetNumbers[1] )) {
+            balls++;
+        }
+        return balls;
     }
 
     
