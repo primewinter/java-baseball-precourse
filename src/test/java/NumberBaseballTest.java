@@ -37,5 +37,13 @@ public class NumberBaseballTest {
         assertEquals(NBgameServiceImpl.getStrikes(input, targetNumbers), result);
     }
 
+    @Test
+    @DisplayName("test getBalls()")
+    public void getBalls() {
+        int[] targetNumbers = new int[]{1, 3, 7};
+        int[] input = new int[]{3, 2, 9};
+        int result = 1;
+        assertEquals(NBgameServiceImpl.getBalls(input, targetNumbers), result);
+    }
 
 }
