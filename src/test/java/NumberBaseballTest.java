@@ -17,8 +17,8 @@ public class NumberBaseballTest {
     }
 
     @Test
-    @DisplayName("test makeTargetNumber()")
-    public void generateNumbers() {
+    @DisplayName("test generateTargetNumbers()")
+    public void generateTargetNumbers() {
         int[] nums = NBgameServiceImpl.generateTargetNumbers();
         int length = 3;
 

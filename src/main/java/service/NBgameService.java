@@ -8,8 +8,6 @@ public interface NBgameService {
 
     public void guessTargetNumbers(int[] targetNumbers);
 
-    public int[] calculateScore(int[] input, int[] targetNumbers);
-
     public int getStrikes(int[] input, int[] targetNumbers);
 
     public int getBalls(int[] input, int[] targetNumbers);

@@ -12,14 +12,15 @@ public class NBgameServiceImpl implements NBgameService {
     static Scanner sc;
     @Override
     public void startGame() {
-        
         sc = new Scanner(System.in);
+        
         int[] targetNumbers = generateTargetNumbers();
+
         guessTargetNumbers(targetNumbers);
+        
         if( isRestarted() ) {
             startGame();
         }
-        
     }
 
     @Override
@@ -46,13 +47,16 @@ public class NBgameServiceImpl implements NBgameService {
     @Override
     public void guessTargetNumbers(int[] targetNumbers) {
         
+        System.out.print("숫자를 입력해주세요 : ");
         String str = sc.next();
         int[] input = convertToArr(str);
-        int[] score = calculateScore(input, targetNumbers);      
+
+        int strikes = getStrikes(input, targetNumbers);
+        int balls = getBalls(input, targetNumbers);        
         
-        printResult(score[0], score[1]);
+        printResult(strikes, balls);
         
-        if( score[0] == 3 ) {
+        if( strikes == 3 ) {
             return;
         }
 
@@ -60,15 +64,8 @@ public class NBgameServiceImpl implements NBgameService {
     }
 
     @Override
-    public int[] calculateScore(int[] input, int[] targetNumbers) {
-        int[] result = new int[2];
-        result[0] = getStrikes(input, targetNumbers);
-        result[1] = getBalls(input, targetNumbers);
-        return result;
-    }
-
-    @Override
     public void printResult(int strikes, int balls) {
+        
         StringBuilder sb = new StringBuilder();
         if( strikes > 0 ) {
             sb.append(strikes+" 스트라이크 ");
@@ -76,6 +73,10 @@ public class NBgameServiceImpl implements NBgameService {
         if( balls > 0 ) {
             sb.append(balls+" 볼");
         }
+        if( strikes == 0 && balls == 0 ) {
+            sb.append("낫싱");
+        }
+
         System.out.println(sb);
     }
 
@@ -100,12 +101,11 @@ public class NBgameServiceImpl implements NBgameService {
 
     @Override
     public int getStrikes(int[] input, int[] targetNumbers) {
+        
         int strikes = 0;
 
         if( input[0] == targetNumbers[0] ) strikes++;
-        
         if( input[1] == targetNumbers[1] ) strikes++;
-        
         if( input[2] == targetNumbers[2] ) strikes++;
         
         return strikes;
@@ -113,7 +113,9 @@ public class NBgameServiceImpl implements NBgameService {
 
     @Override
     public int getBalls(int[] input, int[] targetNumbers) {
+        
         int balls = 0;
+
         if( input[0] != targetNumbers[0] && ( input[0] == targetNumbers[1] || input[0] == targetNumbers[2] )) {
             balls++;
         }
@@ -123,6 +125,7 @@ public class NBgameServiceImpl implements NBgameService {
         if( input[2] != targetNumbers[2] && ( input[2] == targetNumbers[0] || input[2] == targetNumbers[1] )) {
             balls++;
         }
+
         return balls;
     }
 
