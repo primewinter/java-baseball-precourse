@@ -1,6 +1,5 @@
 package web;
 
-import service.NBgameService;
 import service.impl.NBgameServiceImpl;
 
 public class NumberBaseballGame {
