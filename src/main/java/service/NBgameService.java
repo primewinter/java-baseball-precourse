@@ -6,15 +6,15 @@ public interface NBgameService {
 
     public int[] generateTargetNumbers();
 
-    public void pingpong(int[] targetNumbers);
+    public void guessTargetNumbers(int[] targetNumbers);
 
-    public int[] compareInputWithTargetNumbers(int[] input, int[] targetNumbers);
+    public int[] calculateScore(int[] input, int[] targetNumbers);
 
     public int getStrikes(int[] input, int[] targetNumbers);
 
     public int getBalls(int[] input, int[] targetNumbers);
 
-    public void printResult();
+    public void printResult(int strikes, int balls);
 
     public boolean isRestarted();
 }

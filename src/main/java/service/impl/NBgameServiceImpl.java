@@ -9,6 +9,7 @@ import service.NBgameService;
 
 public class NBgameServiceImpl implements NBgameService {
 
+    static Scanner sc;
     @Override
     public void startGame() {
         // TODO Auto-generated method stub
@@ -37,31 +38,44 @@ public class NBgameServiceImpl implements NBgameService {
     }
 
     @Override
-    public void pingpong(int[] targetNumbers) {
-        Scanner sc = new Scanner(System.in);
-
-        int input = sc.nextInt();
-
-    }
-
-    @Override
-    public int[] compareInputWithTargetNumbers(int[] input, int[] targetNumbers) {
-        int[] result = new int[2];
-        for(int i = 0 ; i < targetNumbers.length ; i++) {
-
+    public void guessTargetNumbers(int[] targetNumbers) {
+        
+        String str = sc.next();
+        int[] input = convertToArr(str);
+        int[] score = calculateScore(input, targetNumbers);      
+        
+        printResult(score[0], score[1]);
+        
+        if( score[0] == 3 ) {
+            return;
         }
-        return null;
+
+        guessTargetNumbers(targetNumbers);
     }
 
     @Override
-    public void printResult() {
-        // TODO Auto-generated method stub
+    public int[] calculateScore(int[] input, int[] targetNumbers) {
+        int[] result = new int[2];
+        result[0] = getStrikes(input, targetNumbers);
+        result[1] = getBalls(input, targetNumbers);
+        return result;
+    }
 
+    @Override
+    public void printResult(int strikes, int balls) {
+        StringBuilder sb = new StringBuilder();
+        if( strikes > 0 ) {
+            sb.append(strikes+" 스트라이크 ");
+        }
+        if( balls > 0 ) {
+            sb.append(balls+" 볼");
+        }
+        System.out.println(sb);
     }
 
     @Override
     public boolean isRestarted() {
-        // TODO Auto-generated method stub
+        
         return false;
     }
 
@@ -93,6 +107,13 @@ public class NBgameServiceImpl implements NBgameService {
         return balls;
     }
 
+    private int[] convertToArr(String str) {
+        int[] arr = new int[str.length()];
+        for(int i = 0 ; i < str.length(); i++) {
+            arr[i] = Character.getNumericValue(str.charAt(i));
+        }
+        return arr;
+    }
     
 
 
