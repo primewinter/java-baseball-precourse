@@ -12,8 +12,14 @@ public class NBgameServiceImpl implements NBgameService {
     static Scanner sc;
     @Override
     public void startGame() {
-        // TODO Auto-generated method stub
-
+        
+        sc = new Scanner(System.in);
+        int[] targetNumbers = generateTargetNumbers();
+        guessTargetNumbers(targetNumbers);
+        if( isRestarted() ) {
+            startGame();
+        }
+        
     }
 
     @Override
